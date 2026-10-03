@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Streakr</title>
+    <style>
+        body { width: 280px; padding: 15px; font-family: -apple-system, sans-serif; background: #0f172a; color: #f8fafc; border-radius: 8px; margin:0;}
+        h2 { margin: 0 0 10px 0; font-size: 18px; color: #38bdf8; display:flex; align-items:center; gap: 8px;}
+        .stat { font-size: 28px; font-weight: bold; margin: 10px 0; display:flex; align-items:center;}
+        .stat span { font-size: 13px; font-weight:normal; margin-left:10px; color: #94a3b8;}
+        .status { padding: 8px; border-radius: 6px; background: #1e293b; font-size: 13px; text-align: center; margin-top:10px; font-weight:500;}
+        .status.repair { background: #ef4444; color: #fff; }
+        .status.done { background: #10b981; color: #fff; }
+        .status.skipped { background: #f59e0b; color: #fff; }
+        input[type="text"] { width: calc(100% - 20px); padding: 10px; margin-top: 10px; border-radius: 6px; border: 1px solid #334155; background: #1e293b; color: #f8fafc; font-size: 13px; outline: none; }
+        input[type="text"]:focus { border-color: #38bdf8; }
+        button { width: 100%; padding: 12px; border: none; border-radius: 6px; background: #38bdf8; color: #0f172a; font-weight: bold; cursor: pointer; margin-top: 15px; font-size: 14px;}
+        button:hover { background: #7dd3fc; }
+        #skipBtn { background: transparent; border: 1px solid #ef4444; color: #ef4444; margin-top: 10px; padding: 8px;}
+        #skipBtn:hover { background: #ef4444; color: #fff; }
+        .hidden { display: none; }
+        #app { display: flex; flex-direction: column; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>⚡ Streakr</h2>
+        <div id="onboarding">
+            <p style="font-size:13px; color:#cbd5e1; line-height: 1.5;">This tool enforces daily coding. It removes choice. No browsing LeetCode until you solve your daily assignment.</p>
+            <input type="text" id="onboardUsername" placeholder="LeetCode Username (Required)" />
+            <button id="startBtn">Start Enforcing</button>
+        </div>
+        <div id="dashboard" class="hidden">
+            <div class="stat" id="streakLabel">0 <span>Day Auto-Streak</span></div>
+            <div class="stat" style="font-size:18px;" id="diffLabel">Easy <span>Target Diff</span></div>
+            <div id="statusBox" class="status">Pending Assignment</div>
+            
+            <div id="profileSection" style="margin-top: 15px; padding: 10px; background: #1e293b; border-radius: 6px; font-size: 13px;">
+                <div id="profileDisplay" style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="color:#94a3b8;">Linked: <strong id="usernameLabel" style="color:#38bdf8;">None</strong></span>
+                    <button id="editProfileBtn" style="width:auto; padding:4px 8px; margin:0; font-size:11px; background:transparent; border:1px solid #38bdf8; color:#38bdf8;">Edit</button>
+                </div>
+                <div id="profileEdit" class="hidden">
+                    <input type="text" id="dashboardUsername" placeholder="LeetCode Username" style="margin-top:0;" />
+                    <button id="saveProfileBtn" style="margin-top:8px; padding:8px;">Save Username</button>
+                </div>
+            </div>
+
+            <div id="analytics" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155; font-size: 13px;">
+                <div id="consistencyRow" style="display:flex; justify-content:space-between; margin-bottom:10px; color:#94a3b8; font-size:12px;"></div>
+                <div id="effortBox" style="color: #cbd5e1; margin-bottom: 10px;">
+                    Time: 0s | Activity: 0 actions
+                </div>
+                <div id="feedbackBox" style="padding: 8px; border-left: 3px solid #38bdf8; background: #1e293b; color: #f8fafc; font-style: italic;"></div>
+            </div>
+
+            <button id="solveBtn">Go To Today's Problem</button>
+            <button id="skipBtn">Skip Today (Lose Streak)</button>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
